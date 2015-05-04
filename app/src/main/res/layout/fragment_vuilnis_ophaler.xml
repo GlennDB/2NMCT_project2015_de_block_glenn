@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nmct.howest.be.vuilnisophaler.VuilnisOphalerFragment">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewLogo"
+        android:src="@drawable/vuilbak_startscherm"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_map"
+        android:id="@+id/buttonViewMap"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/textViewYourInfo"
+        android:layout_alignStart="@+id/textViewYourInfo"
+        android:padding="20dp"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_list"
+        android:id="@+id/buttonViewList"
+        android:layout_above="@+id/buttonViewMap"
+        android:layout_alignStart="@+id/buttonViewMap"
+        android:layout_alignEnd="@+id/buttonViewMap"
+        android:padding="20dp"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/user_info"
+        android:id="@+id/textViewYourInfo"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/imageViewLogo"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="#ff475800"
+        android:textSize="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/straat_nummer"
+        android:id="@+id/textViewStreetNumber"
+        android:layout_below="@+id/textViewYourInfo"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff5a595b"
+        android:textStyle="bold"
+        android:layout_marginTop="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/postcode_stad"
+        android:id="@+id/textViewZipcodeCity"
+        android:layout_below="@+id/textViewStreetNumber"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff5a595b" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/land"
+        android:id="@+id/textViewCountry"
+        android:layout_below="@+id/textViewZipcodeCity"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff5a595b" />
+</RelativeLayout>

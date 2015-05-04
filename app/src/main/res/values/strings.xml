@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">VuilnisOphaler</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Vuilnis Ophaler</string>
+
+    <string name="user_info">U bevindt zich nu hier:</string>
+    <string name="view_list">Bekijk lijst met vuilbakken</string>
+    <string name="view_map">Bekijk kaart met vuilbakken</string>
+
+    <string name="straat_nummer">Onbekende straat en nummer!</string>
+    <string name="postcode_stad">Onbekende postcode en stad!</string>
+    <string name="land" >Onbekend land!</string>
 
 </resources>
