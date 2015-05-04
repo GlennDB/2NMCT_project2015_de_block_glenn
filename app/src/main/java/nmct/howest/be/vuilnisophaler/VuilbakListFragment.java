@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -54,7 +55,7 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         String[] columns = new String[]{Contract.VuilbakColumns.COLUMN_VUILBAK_ADRES, Contract.VuilbakColumns.COLUMN_VUILBAK_LOCATIE,
-                Contract.VuilbakColumns.COLUMN_VUILBAK_COORDINATEN};
+                Contract.VuilbakColumns.COLUMN_VUILBAK_COORDINATEN, Contract.VuilbakColumns.COLUMN_VUILBAK_KLEUR};
         int[] viewIds = new int[]{R.id.textViewAdres, R.id.textViewLocatie, R.id.textViewAfstand};
 
         vAdapter = new VuilbakAdapter(getActivity(), R.layout.row_vuilbak, null, columns, viewIds, 0);
@@ -99,6 +100,7 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
             TextView textViewAdres = holder.textViewAdres;
             TextView textViewLocatie = holder.textViewLocatie;
             TextView textViewAfstand = holder.textViewAfstand;
+            ImageView imageViewColorVuilbak = holder.imageViewColorVuilbak;
 
             int colnr = cursor.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_ADRES);
             String adres = cursor.getString(colnr);
@@ -132,17 +134,35 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
             catch(Exception ex){
                 textViewAfstand.setText("/");
             }
+
+            int colnr4 = cursor.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_KLEUR);
+            String kleur = cursor.getString(colnr4);
+
+            switch(kleur)
+            {
+                case "groen": imageViewColorVuilbak.setImageResource(R.drawable.vuilbak_groen);
+                    break;
+                case "oranje": imageViewColorVuilbak.setImageResource(R.drawable.vuilbak_oranje);
+                    break;
+                case "inox": imageViewColorVuilbak.setImageResource(R.drawable.vuilbak_inox);
+                    break;
+                case "grijs": imageViewColorVuilbak.setImageResource(R.drawable.vuilbak_grijs);
+                    break;
+                default: imageViewColorVuilbak.setImageResource(R.drawable.vuilbak_onbekend);
+            }
         }
 
         class ViewHolder {
             public TextView textViewAdres = null;
             public TextView textViewLocatie = null;
             public TextView textViewAfstand = null;
+            public ImageView imageViewColorVuilbak = null;
 
             public ViewHolder(View row) {
                 this.textViewAdres = (TextView) row.findViewById(R.id.textViewAdres);
                 this.textViewLocatie = (TextView) row.findViewById(R.id.textViewLocatie);
                 this.textViewAfstand = (TextView) row.findViewById(R.id.textViewAfstand);
+                this.imageViewColorVuilbak = (ImageView) row.findViewById(R.id.imageViewColorVuilbak);
             }
         }
 
