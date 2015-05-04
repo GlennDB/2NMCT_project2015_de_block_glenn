@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/imageViewColorVuilbak"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/vuilbak_grijs"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/list_straat"
+        android:id="@+id/textViewAdres"
+        android:textSize="16dp"
+        android:layout_marginLeft="2dp"
+        android:textStyle="bold"
+        android:textColor="#ff000000"
+        android:layout_alignTop="@+id/imageViewColorVuilbak"
+        android:layout_toEndOf="@+id/imageViewColorVuilbak"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/list_afstand_title"
+        android:id="@+id/textViewAfstandTitle"
+        android:textStyle="bold"
+        android:textColor="#ff000000"
+        android:layout_marginRight="5dp"
+        android:layout_alignBottom="@+id/imageViewColorVuilbak"
+        android:layout_toStartOf="@+id/textViewAfstand"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/list_afstand_value"
+        android:id="@+id/textViewAfstand"
+        android:layout_marginRight="5dp"
+        android:textColor="#ff5a595b"
+        android:textSize="13dp"
+        android:layout_alignBottom="@+id/textViewAfstandTitle"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_locatie_value"
+        android:id="@+id/textViewLocatie"
+        android:textColor="#ff5a595b"
+        android:textSize="13dp"
+        android:layout_below="@+id/textViewAdres"
+        android:layout_toEndOf="@+id/imageViewColorVuilbak"
+        android:layout_marginLeft="2dp" />
+
+</RelativeLayout>

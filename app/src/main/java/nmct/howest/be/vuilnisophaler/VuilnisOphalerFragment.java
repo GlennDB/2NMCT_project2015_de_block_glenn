@@ -2,6 +2,7 @@ package nmct.howest.be.vuilnisophaler;
 
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.location.Address;
 import android.location.Criteria;
@@ -14,6 +15,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,14 +32,35 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
     TextView textViewStreetNumber;
     TextView textViewZipcodeCity;
     TextView textViewCountry;
+    Button buttonShowLijst;
+
+    String longitude = "";
+    String latitude = "";
+
+    private OnVuilnisOphalerFragmentListener onVuilnisOphalerFragmentListener;
+
+    public interface OnVuilnisOphalerFragmentListener{
+        public void onButtonShowListClicked(String latitude, String longitude);
+    }
+
+    public VuilnisOphalerFragment() {
+        // Required empty public constructor
+    }
 
     public static VuilnisOphalerFragment newInstance() {
         VuilnisOphalerFragment fragment = new VuilnisOphalerFragment();
         return fragment;
     }
 
-    public VuilnisOphalerFragment() {
-        // Required empty public constructor
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            onVuilnisOphalerFragmentListener = (OnVuilnisOphalerFragmentListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnVuilnisOphalerFragmentListener");
+        }
     }
 
     @Override
@@ -84,15 +107,38 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
         textViewZipcodeCity = (TextView) v.findViewById(R.id.textViewZipcodeCity);
         textViewCountry = (TextView) v.findViewById(R.id.textViewCountry);
 
+        buttonShowLijst = (Button) v.findViewById(R.id.buttonViewList);
+        buttonShowLijst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToShowListFragment();
+            }
+        });
+
         return v;
+    }
+
+    private void goToShowListFragment() {
+        onVuilnisOphalerFragmentListener.onButtonShowListClicked(latitude, longitude);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        onVuilnisOphalerFragmentListener = null;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     @Override
     public void onLocationChanged(Location location) {
 
         // Getting user its longitude/ latitude
-        String longitude = String.valueOf(location.getLongitude());
-        String latitude = String.valueOf(location.getLatitude());
+        longitude = String.valueOf(location.getLongitude());
+        latitude = String.valueOf(location.getLatitude());
 
         // Getting user its address
         String address = null;

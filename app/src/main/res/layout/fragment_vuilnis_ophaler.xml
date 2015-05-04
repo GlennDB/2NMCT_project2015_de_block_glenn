@@ -59,7 +59,8 @@
         android:layout_centerHorizontal="true"
         android:textColor="#ff5a595b"
         android:textStyle="bold"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="30dp"
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class VuilnisOphalerActivity extends Activity {
+public class VuilnisOphalerActivity extends Activity implements VuilnisOphalerFragment.OnVuilnisOphalerFragmentListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,5 +62,25 @@ public class VuilnisOphalerActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         return super.onOptionsItemSelected(item);
     }
+
+    private void showVuilbakListFragment(String latitude, String longitude) {
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        VuilbakListFragment vuilbakListFragment = VuilbakListFragment.newInstance(latitude, longitude);
+        fragmentTransaction.replace(R.id.container, vuilbakListFragment);
+
+        //Add this transaction to the back stack. This means that the transaction will be remembered
+        //after it is committed, and will reverse its operation when later popped off the stack.
+        //name: An optional name for this back stack state, or null.
+        fragmentTransaction.addToBackStack("showVuilbakListFragment");
+        fragmentTransaction.commit();
+
+        setTitle("Selecteer een vuilbak: ");
+    }
+
+    @Override
+    public void onButtonShowListClicked(String latitude, String longitude) { showVuilbakListFragment(latitude, longitude); }
 
 }
