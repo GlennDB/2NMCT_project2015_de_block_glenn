@@ -1,0 +1,444 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nmct.howest.be.vuilnisophaler.VuilbakDetailsFragment">
+
+
+    <ImageView
+        android:layout_width="475dp"
+        android:layout_height="275dp"
+        android:id="@+id/imageViewMap"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20dp"
+        android:src="@drawable/no_map_found" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detail_adres"
+        android:id="@+id/textViewadresTitle"
+        android:textStyle="bold"
+        android:textColor="#ff000000"
+        android:layout_alignBottom="@+id/imageViewMap"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        android:id="@+id/textViewAdres"
+        android:layout_marginStart="0dp"
+        android:textColor="#ff5a595b"
+        android:layout_below="@+id/textViewadresTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detail_locatie"
+        android:id="@+id/textViewlocatieTitle"
+        android:textColor="#ff000000"
+        android:textStyle="bold"
+        android:layout_below="@+id/textViewAdres"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        android:id="@+id/textViewLocatie"
+        android:textColor="#ff5a595b"
+        android:layout_below="@+id/textViewlocatieTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        android:id="@+id/textViewChipLocatie"
+        android:textColor="#ff5a595b"
+        android:layout_below="@+id/textViewchipLocatieTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detail_chiplocatie"
+        android:id="@+id/textViewchipLocatieTitle"
+        android:textColor="#ff000000"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewLocatie"/>
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/imageViewColor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/vuilbak_onbekend"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        android:id="@+id/textViewKleur"
+        android:textStyle="bold"
+        android:textColor="#ff000000"
+        android:layout_alignTop="@+id/imageViewColor"
+        android:layout_toEndOf="@+id/textViewchipLocatieTitle"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detail_ledigingen"
+        android:id="@+id/textViewledigingenTitle"
+        android:textColor="#ff000000"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/textViewchipLocatieTitle"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        android:id="@+id/textViewLedigingen"
+        android:textColor="#ff5a595b"
+        android:layout_below="@+id/textViewledigingenTitle"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewChipLocatie"
+        android:padding="5dp"
+        android:background="@drawable/customborder"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_kenmerken"
+            android:id="@+id/textViewkenmerkenTitle"
+            android:textColor="#ff000000"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewLocatie"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewChipLocatie"
+            android:layout_alignParentStart="true"
+            android:paddingBottom="5dp">
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_merk"
+                    android:id="@+id/textViewmerkTitle"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_verharding"
+                    android:id="@+id/textViewverhardingstypeTitle"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textViewmerkTitle"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_bevestiging"
+                    android:id="@+id/textViewbevestigingTitle"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textViewverhardingstypeTitle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_grondbuis"
+                    android:id="@+id/textViewgrondbuisTitle"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textViewbevestigingTitle"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_inhoud"
+                    android:id="@+id/textViewinhoudTitle"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textViewgrondbuisTitle"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewMerk"
+                    android:textColor="#ff5a595b"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/textViewmerkTitle"
+                    android:layout_marginStart="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewVerharding"
+                    android:textColor="#ff5a595b"
+                    android:layout_alignTop="@+id/textViewverhardingstypeTitle"
+                    android:layout_toEndOf="@+id/textViewverhardingstypeTitle"
+                    android:layout_marginStart="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewBevestiging"
+                    android:textColor="#ff5a595b"
+                    android:layout_alignTop="@+id/textViewbevestigingTitle"
+                    android:layout_toEndOf="@+id/textViewbevestigingTitle"
+                    android:layout_marginStart="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewGrondbuis"
+                    android:textColor="#ff5a595b"
+                    android:layout_below="@+id/textViewbevestigingTitle"
+                    android:layout_toEndOf="@+id/textViewgrondbuisTitle"
+                    android:layout_marginStart="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewInhoud"
+                    android:textColor="#ff5a595b"
+                    android:layout_below="@+id/textViewgrondbuisTitle"
+                    android:layout_toEndOf="@+id/textViewinhoudTitle"
+                    android:layout_marginStart="5dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_volume"
+                    android:id="@+id/textViewvolumeTitel"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@+id/textViewVolume"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewVolume"
+                    android:textColor="#ff5a595b"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:paddingRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_openingen"
+                    android:id="@+id/textViewOpeningen"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:paddingRight="5dp"
+                    android:layout_below="@+id/textViewvolumeTitel"
+                    android:layout_alignParentEnd="true"
+                    android:paddingTop="32dp"
+                    android:layout_marginTop="-11dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash"
+                    android:id="@+id/textViewOpening"
+                    android:textColor="#ff5a595b"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignEnd="@+id/textViewVolume"
+                    android:layout_alignParentEnd="true"
+                    android:paddingRight="5dp"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_min"
+                android:id="@+id/textViewminTitle"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slash"
+                android:id="@+id/textViewMin"
+                android:textColor="#ff5a595b"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textViewminTitle"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_gem"
+                android:id="@+id/textViewgemTitle"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textViewMin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slash"
+                android:id="@+id/textViewGem"
+                android:textColor="#ff5a595b"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/textViewKleur" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deatil_max"
+                android:id="@+id/textViewmaxTitle"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textViewGem"
+                android:layout_margin="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slash"
+                android:id="@+id/textViewMax"
+                android:textColor="#ff5a595b"
+                android:layout_marginEnd="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textViewMax" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_tot"
+                android:id="@+id/textViewtotTitle"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textViewMax"
+                android:layout_margin="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slash"
+                android:id="@+id/textViewTot"
+                android:textColor="#ff5a595b"
+                android:layout_marginEnd="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textViewTot" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

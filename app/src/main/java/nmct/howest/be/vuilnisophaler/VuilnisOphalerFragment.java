@@ -107,6 +107,9 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
         textViewZipcodeCity = (TextView) v.findViewById(R.id.textViewZipcodeCity);
         textViewCountry = (TextView) v.findViewById(R.id.textViewCountry);
 
+        textViewStreetNumber.setText("Beweeg het device om uw huidige positie op te vragen.");
+        textViewZipcodeCity.setText("Zorg ervoor dat GPS en WIFI-connectie aangeschakeld zijn.");
+
         buttonShowLijst = (Button) v.findViewById(R.id.buttonViewList);
         buttonShowLijst.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -5,14 +5,31 @@
     <string name="user_info">U bevindt zich nu hier:</string>
     <string name="view_list">Bekijk lijst met vuilbakken</string>
     <string name="view_map">Bekijk kaart met vuilbakken</string>
-    <string name="straat_nummer">Onbekende straat en nummer!</string>
-    <string name="postcode_stad">Onbekende postcode en stad!</string>
-    <string name="land">Onbekend land!</string>
+    <string name="straat_nummer"></string>
+    <string name="postcode_stad"></string>
+    <string name="land"></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="list_straat">Straatnaam en nummer</string>
     <string name="list_afstand_title">Afstand:</string>
     <string name="list_afstand_value">00000m</string>
     <string name="list_locatie_title">Locatie:</string>
     <string name="list_locatie_value">Soort locatie</string>
+    <string name="slash">/</string>
+    <string name="detail_adres">Adres:</string>
+    <string name="detail_locatie">Locatie:</string>
+    <string name="detail_chiplocatie">Chiplocatie:</string>
+    <string name="detail_ledigingen">Aantal ledigingen</string>
+    <string name="detail_kenmerken">Kenmerken</string>
+    <string name="detail_merk">Merk:</string>
+    <string name="detail_verharding">Verharding:</string>
+    <string name="detail_bevestiging">Bevestiging:</string>
+    <string name="detail_grondbuis">Grondbuis:</string>
+    <string name="detail_inhoud">Inhoud:</string>
+    <string name="detail_volume">Volume:</string>
+    <string name="detail_openingen"># openingen</string>
+    <string name="detail_min">Min.</string>
+    <string name="detail_gem">Gem.</string>
+    <string name="deatil_max">Max.</string>
+    <string name="detail_tot">Tot.</string>
 
 </resources>

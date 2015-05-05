@@ -123,7 +123,6 @@ public class VuilbakkenLoader extends AsyncTaskLoader<Cursor> {
                     String vuilbakVullingsgraadGemiddeld = "";
                     String vuilbakVullingsgraadMin = "";
                     String vuilbakVullingsgraadMax = "";
-                    String vuilbakGemiddeldGewicht = "";
 
                     while (reader.hasNext()) {
                         String name = reader.nextName();
@@ -138,7 +137,7 @@ public class VuilbakkenLoader extends AsyncTaskLoader<Cursor> {
                             vuilbakIntercommunale = reader.nextString();
                         } else if (name.equals("Adres/Plaats")) {
                             vuilbakAdres = reader.nextString();
-                        } else if (name.equals("Gemeente/Stad")) {
+                        } else if (name.equals("Gemeente/stad")) {
                             vuilbakGemeente = reader.nextString();
                         } else if (name.equals("Vindbaarheid opvallend zichtbaar")) {
                             vuilbakVindbaarheid = reader.nextString();
@@ -160,7 +159,7 @@ public class VuilbakkenLoader extends AsyncTaskLoader<Cursor> {
                             }
                         } else if (name.equals("Kleur")) {
                             vuilbakKleur = reader.nextString();
-                        } else if (name.equals("Merk")) {
+                        } else if (name.equals("Model/Merk")) {
                             vuilbakMerk = reader.nextString();
                         } else if (name.equals("Verhardingstype")) {
                             vuilbakVerhardingstype = reader.nextString();
@@ -224,14 +223,6 @@ public class VuilbakkenLoader extends AsyncTaskLoader<Cursor> {
                             } else if (reader.peek().equals(JsonToken.STRING)) {
                                 vuilbakVullingsgraadMax = reader.nextString();
                             }
-                        } else if (name.equals("Gemiddeld gewicht")) {
-                            if (reader.peek().equals(JsonToken.NULL)) {
-                                reader.skipValue();
-                            } else if (reader.peek().equals(JsonToken.NUMBER)) {
-                                vuilbakGemiddeldGewicht = ""+reader.nextDouble();
-                            } else if (reader.peek().equals(JsonToken.STRING)) {
-                                vuilbakGemiddeldGewicht = reader.nextString();
-                            }
                         } else {
                             reader.skipValue();
                         }
@@ -267,7 +258,6 @@ public class VuilbakkenLoader extends AsyncTaskLoader<Cursor> {
                     row.add(vuilbakVullingsgraadGemiddeld);
                     row.add(vuilbakVullingsgraadMin);
                     row.add(vuilbakVullingsgraadMax);
-                    row.add(vuilbakGemiddeldGewicht);
 
                     id++;
 

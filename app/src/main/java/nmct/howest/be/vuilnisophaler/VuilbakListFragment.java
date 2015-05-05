@@ -1,8 +1,10 @@
 package nmct.howest.be.vuilnisophaler;
 
 
+import android.app.Activity;
 import android.app.ListFragment;
 import android.app.LoaderManager;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Loader;
 import android.database.Cursor;
@@ -10,13 +12,18 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader.Contract;
 import nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader.VuilbakkenLoader;
@@ -28,6 +35,7 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
     private static final String ARG_LONGITUDE="Longitude";
 
     private VuilbakAdapter vAdapter;
+    private OnVuilbakListFragmentListener vListener;
 
     public VuilbakListFragment() {
         // Required empty public constructor
@@ -45,6 +53,16 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            vListener = (OnVuilbakListFragmentListener) activity;
+        } catch (ClassCastException ex) {
+            throw new ClassCastException(activity.toString() + " must implement OnStudentsFragmentListener");
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -59,6 +77,7 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
         int[] viewIds = new int[]{R.id.textViewAdres, R.id.textViewLocatie, R.id.textViewAfstand};
 
         vAdapter = new VuilbakAdapter(getActivity(), R.layout.row_vuilbak, null, columns, viewIds, 0);
+
         setListAdapter(vAdapter);
 
         getLoaderManager().initLoader(0, null, this);
@@ -77,6 +96,19 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         vAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Cursor c = (Cursor)vAdapter.getItem(position);
+        String coordinaten = c.getString(c.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_COORDINATEN));
+        if (vListener!=null) vListener.onSelectVuilbak(c);
     }
 
     class VuilbakAdapter extends SimpleCursorAdapter {
@@ -105,6 +137,7 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
             int colnr = cursor.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_ADRES);
             String adres = cursor.getString(colnr);
             adres = adres.replace(" - ", " ");
+            adres = adres.replace(" -", " ");
             textViewAdres.setText(adres);
 
             int colnr2 = cursor.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_LOCATIE);
@@ -187,5 +220,9 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
         private double rad2deg(double rad) {
             return (rad * 180 / Math.PI);
         }
+    }
+
+    public interface OnVuilbakListFragmentListener {
+        public void onSelectVuilbak(Cursor vuilbak);
     }
 }

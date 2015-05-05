@@ -9,7 +9,7 @@
         android:id="@+id/imageViewColorVuilbak"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/vuilbak_grijs"
+        android:src="@drawable/vuilbak_onbekend"
         android:layout_margin="5dp" />
 
     <TextView
