@@ -154,9 +154,10 @@ public class VuilbakDetailsFragment extends Fragment {
         if(materiaal.equals("")) materiaal = "Ongekend materiaal";
         materiaal = firstCharToUpper(materiaal);
         setValueTo(textViewKenmerkenTitle, "Kenmerken ("+materiaal+")");
-        if(inwerpOpeningen.equals("")) inwerpOpeningen = "? openingen";
-        setValueTo(textViewOpeningen, inwerpOpeningen);
+        if(inwerpOpeningen.equals("")) inwerpOpeningen = "? openingen:";
+        setValueTo(textViewOpeningen, inwerpOpeningen+":");
         setValueTo(textViewVolume, volume);
+        inwerpOpening = firstCharToUpper(inwerpOpening);
         setValueTo(textViewOpening, inwerpOpening);
         setValueTo(textViewGem, vullingsGraadGemiddeld);
         setValueTo(textViewTot, vullingsGraadTotaal);

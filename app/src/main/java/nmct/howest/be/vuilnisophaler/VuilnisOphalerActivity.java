@@ -1,6 +1,7 @@
 package nmct.howest.be.vuilnisophaler;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.SearchManager;
@@ -95,8 +96,25 @@ public class VuilnisOphalerActivity extends Activity implements VuilnisOphalerFr
         setTitle("Vuilbak chip nr. "+c.getString(c.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_CHIPNUMMER)));
     }
 
+    private void showMapFragment(){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Fragment vuilbakMapFragment = VuilbakMapFragment.newInstance();
+        fragmentTransaction.replace(R.id.container, vuilbakMapFragment);
+
+        //Add this transaction to the back stack. This means that the transaction will be remembered
+        //after it is committed, and will reverse its operation when later popped off the stack.
+        //name: An optional name for this back stack state, or null.
+        fragmentTransaction.addToBackStack("showMapFragment");
+        fragmentTransaction.commit();
+
+        setTitle("Kaart");
+    }
+
     @Override
     public void onButtonShowListClicked(String latitude, String longitude) { showVuilbakListFragment(latitude, longitude); }
+    public void onButtonShowMapClicked() { showMapFragment(); }
     public void onSelectVuilbak(Cursor c) { showVuilbakDetailsFragment(c); }
 
 }

@@ -32,7 +32,9 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
     TextView textViewStreetNumber;
     TextView textViewZipcodeCity;
     TextView textViewCountry;
+
     Button buttonShowLijst;
+    Button buttonShowMap;
 
     String longitude = "";
     String latitude = "";
@@ -41,6 +43,7 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
 
     public interface OnVuilnisOphalerFragmentListener{
         public void onButtonShowListClicked(String latitude, String longitude);
+        public void onButtonShowMapClicked();
     }
 
     public VuilnisOphalerFragment() {
@@ -118,11 +121,23 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
             }
         });
 
+        buttonShowMap = (Button) v.findViewById(R.id.buttonViewMap);
+        buttonShowMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToShowMapFragment();
+            }
+        });
+
         return v;
     }
 
     private void goToShowListFragment() {
         onVuilnisOphalerFragmentListener.onButtonShowListClicked(latitude, longitude);
+    }
+
+    private void goToShowMapFragment() {
+        onVuilnisOphalerFragmentListener.onButtonShowMapClicked();
     }
 
     @Override

@@ -289,10 +289,9 @@
                     android:textColor="#ff000000"
                     android:textStyle="bold"
                     android:paddingRight="5dp"
+                    android:paddingTop="5dp"
                     android:layout_below="@+id/textViewvolumeTitel"
-                    android:layout_alignParentEnd="true"
-                    android:paddingTop="32dp"
-                    android:layout_marginTop="-11dp" />
+                    android:layout_alignParentEnd="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -300,12 +299,10 @@
                     android:text="@string/slash"
                     android:id="@+id/textViewOpening"
                     android:textColor="#ff5a595b"
-                    android:layout_marginStart="5dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignEnd="@+id/textViewVolume"
-                    android:layout_alignParentEnd="true"
                     android:paddingRight="5dp"
-                    android:textSize="13dp" />
+                    android:layout_below="@+id/textViewOpeningen"
+                    android:layout_alignEnd="@+id/textViewOpeningen"
+                    android:gravity="right" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -407,7 +404,8 @@
                 android:textColor="#ff5a595b"
                 android:layout_marginEnd="5dp"
                 android:layout_alignParentBottom="true"
-                android:layout_toEndOf="@+id/textViewMax" />
+                android:layout_toEndOf="@+id/textViewMax"
+                android:layout_marginLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -435,9 +433,9 @@
                 android:text="@string/slash"
                 android:id="@+id/textViewTot"
                 android:textColor="#ff5a595b"
-                android:layout_marginEnd="5dp"
                 android:layout_alignParentBottom="true"
-                android:layout_toEndOf="@+id/textViewTot" />
+                android:layout_toEndOf="@+id/textViewTot"
+                android:layout_marginLeft="5dp" />
         </LinearLayout>
     </LinearLayout>
 
