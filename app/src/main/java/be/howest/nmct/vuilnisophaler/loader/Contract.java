@@ -1,4 +1,4 @@
-package nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader;
+package be.howest.nmct.vuilnisophaler.loader;
 
 import android.provider.BaseColumns;
 

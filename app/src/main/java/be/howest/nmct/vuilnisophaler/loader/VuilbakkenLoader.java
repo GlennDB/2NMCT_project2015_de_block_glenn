@@ -1,4 +1,4 @@
-package nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader;
+package be.howest.nmct.vuilnisophaler.loader;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.database.MatrixCursor;
 import android.provider.BaseColumns;
 import android.util.JsonReader;
 import android.util.JsonToken;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;

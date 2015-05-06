@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "nmct.howest.be.vuilnisophaler"
+        applicationId "be.howest.nmct.vuilnisophaler"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1

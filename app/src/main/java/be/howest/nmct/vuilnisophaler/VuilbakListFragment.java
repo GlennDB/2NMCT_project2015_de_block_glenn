@@ -1,32 +1,24 @@
-package nmct.howest.be.vuilnisophaler;
+package be.howest.nmct.vuilnisophaler;
 
 
 import android.app.Activity;
 import android.app.ListFragment;
 import android.app.LoaderManager;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader.Contract;
-import nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader.VuilbakkenLoader;
+import nmct.howest.be.vuilnisophaler.R;
+import be.howest.nmct.vuilnisophaler.loader.Contract;
+import be.howest.nmct.vuilnisophaler.loader.VuilbakkenLoader;
 
 
 public class VuilbakListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {

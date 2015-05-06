@@ -1,7 +1,6 @@
-package nmct.howest.be.vuilnisophaler;
+package be.howest.nmct.vuilnisophaler;
 
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Address;
@@ -16,13 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
+import nmct.howest.be.vuilnisophaler.R;
 
 public class VuilnisOphalerFragment extends Fragment implements LocationListener {
 

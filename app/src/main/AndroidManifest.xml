@@ -23,7 +23,7 @@
             android:value="AIzaSyDd9mbPtICBPQ90_jqklH0iLgf_PDrdKBA"/>
 
         <activity
-            android:name=".VuilnisOphalerActivity"
+            android:name="be.howest.nmct.vuilnisophaler.VuilnisOphalerActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

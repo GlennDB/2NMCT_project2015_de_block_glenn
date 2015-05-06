@@ -1,4 +1,4 @@
-package nmct.howest.be.vuilnisophaler;
+package be.howest.nmct.vuilnisophaler;
 
 
 import android.database.Cursor;
@@ -16,7 +16,8 @@ import android.widget.TextView;
 
 import java.io.InputStream;
 
-import nmct.howest.be.vuilnisophaler.nmct.howest.be.vuilnisophaler.loader.Contract;
+import nmct.howest.be.vuilnisophaler.R;
+import be.howest.nmct.vuilnisophaler.loader.Contract;
 
 
 public class VuilbakDetailsFragment extends Fragment {
