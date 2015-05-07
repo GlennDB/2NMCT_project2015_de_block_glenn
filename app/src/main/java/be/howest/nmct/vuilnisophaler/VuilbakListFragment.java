@@ -99,7 +99,6 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Cursor c = (Cursor)vAdapter.getItem(position);
-        String coordinaten = c.getString(c.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_COORDINATEN));
         if (vListener!=null) vListener.onSelectVuilbak(c);
     }
 
@@ -149,7 +148,15 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
                     LatLong[0] = LatLong[0].replace(",", ".");
                     LatLong[1] = LatLong[1].replace(",", ".");
                 } else {
-                    LatLong = coordinaten.split(",");
+                    if(coordinaten.contains(" "))
+                    {
+                        LatLong = coordinaten.split(" ");
+                        LatLong[0] = LatLong[0].replace(" ", "");
+                        LatLong[1] = LatLong[1].replace(" ", "");
+                    }
+                    else {
+                        LatLong = coordinaten.split(",");
+                    }
                 }
                 double dist = distance(Double.valueOf(LatLong[0]), Double.valueOf(LatLong[1]), Double.valueOf(getArguments().get(ARG_LATITUDE).toString()), Double.valueOf(getArguments().get(ARG_LONGITUDE).toString()), "K");
                 double factor = 1e3; // = 1 * 10^5 = 100000.
