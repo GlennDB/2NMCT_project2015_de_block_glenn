@@ -106,6 +106,8 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_vuilnis_ophaler, container, false);
 
+        getActivity().findViewById(R.id.container).setPadding(32,32,32,32);
+
         textViewStreetNumber = (TextView) v.findViewById(R.id.textViewStreetNumber);
         textViewZipcodeCity = (TextView) v.findViewById(R.id.textViewZipcodeCity);
         textViewCountry = (TextView) v.findViewById(R.id.textViewCountry);

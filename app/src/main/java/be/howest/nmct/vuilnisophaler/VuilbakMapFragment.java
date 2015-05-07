@@ -1,6 +1,7 @@
 package be.howest.nmct.vuilnisophaler;
 
 
+import android.app.FragmentTransaction;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Loader;
@@ -14,8 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.LinearLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +48,9 @@ import be.howest.nmct.vuilnisophaler.loader.VuilbakkenLoader;
 import nmct.howest.be.vuilnisophaler.R;
 
 
-public class VuilbakMapFragment extends Fragment{
+public class VuilbakMapFragment extends Fragment implements OnMapReadyCallback{
+
+    private MapFragment mMapFragment;
 
     public VuilbakMapFragment() {
         // Required empty public constructor
@@ -50,14 +61,48 @@ public class VuilbakMapFragment extends Fragment{
         return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mMapFragment = MapFragment.newInstance();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.map, mMapFragment);
+        fragmentTransaction.commit();
+
+        mMapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        LatLng dikkelvenne = new LatLng(50.916667, 3.683333);
+
+        googleMap.setMyLocationEnabled(true);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dikkelvenne, 13));
+
+        googleMap.addMarker(new MarkerOptions()
+                .title("Dikkelvenne")
+                .snippet("City of Dikkelvenne")
+                .position(dikkelvenne));
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        View v = inflater.inflate(R.layout.fragment_vuilbak_map, container, false);
         new loadmore().execute();
-        return inflater.inflate(R.layout.fragment_vuilbak_map, container, false);
+
+        getActivity().findViewById(R.id.container).setPadding(0,0,0,0);
+
+        return v;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().findViewById(R.id.container).setPadding(16,16,16,16);
     }
 
     public class loadmore extends AsyncTask<String, Integer, ArrayList<String>> {

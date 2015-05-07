@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.MapFragment;
+
 import nmct.howest.be.vuilnisophaler.R;
 import be.howest.nmct.vuilnisophaler.loader.Contract;
 

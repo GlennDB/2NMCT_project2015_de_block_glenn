@@ -58,6 +58,7 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        getActivity().findViewById(R.id.container).setPadding(32,32,32,32);
         return inflater.inflate(R.layout.fragment_vuilbak_list, container, false);
     }
 

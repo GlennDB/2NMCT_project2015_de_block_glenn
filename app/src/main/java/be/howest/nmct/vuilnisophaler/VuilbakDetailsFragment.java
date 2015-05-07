@@ -117,6 +117,8 @@ public class VuilbakDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_vuilbak_details, container, false);
 
+        getActivity().findViewById(R.id.container).setPadding(32,32,32,32);
+
         textViewAdres = (TextView) v.findViewById(R.id.textViewAdres);
         textViewLocatie = (TextView) v.findViewById(R.id.textViewLocatie);
         textViewChipLocatie = (TextView) v.findViewById(R.id.textViewChipLocatie);
@@ -173,7 +175,15 @@ public class VuilbakDetailsFragment extends Fragment {
                 LatLong[0] = LatLong[0].replace(",", ".");
                 LatLong[1] = LatLong[1].replace(",", ".");
             } else {
-                LatLong = coordinaten.split(",");
+                if(coordinaten.contains(" "))
+                {
+                    LatLong = coordinaten.split(" ");
+                    LatLong[0] = LatLong[0].replace(" ", "");
+                    LatLong[1] = LatLong[1].replace(" ", "");
+                }
+                else {
+                    LatLong = coordinaten.split(",");
+                }
             }
 
 
