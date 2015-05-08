@@ -81,11 +81,11 @@ public class VuilnisOphalerActivity extends Activity implements VuilnisOphalerFr
         setTitle("Vuilbak chip nr. "+c.getString(c.getColumnIndex(Contract.VuilbakColumns.COLUMN_VUILBAK_CHIPNUMMER)));
     }
 
-    private void showMapFragment(){
+    private void showMapFragment(String lat, String lon){
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        Fragment vuilbakMapFragment = VuilbakMapFragment.newInstance();
+        Fragment vuilbakMapFragment = VuilbakMapFragment.newInstance(lat, lon);
         fragmentTransaction.replace(R.id.container, vuilbakMapFragment);
 
         //Add this transaction to the back stack. This means that the transaction will be remembered
@@ -99,7 +99,7 @@ public class VuilnisOphalerActivity extends Activity implements VuilnisOphalerFr
 
     @Override
     public void onButtonShowListClicked(String latitude, String longitude) { showVuilbakListFragment(latitude, longitude); }
-    public void onButtonShowMapClicked() { showMapFragment(); }
+    public void onButtonShowMapClicked(String lat, String lon) { showMapFragment(lat, lon); }
     public void onSelectVuilbak(Cursor c) { showVuilbakDetailsFragment(c); }
 
 }

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.MatrixCursor;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -23,6 +24,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -50,14 +54,23 @@ import nmct.howest.be.vuilnisophaler.R;
 
 public class VuilbakMapFragment extends Fragment implements OnMapReadyCallback{
 
+    private static final String ARG_LATITUDE="Latitude";
+    private static final String ARG_LONGITUDE="Longitude";
+
     private MapFragment mMapFragment;
 
     public VuilbakMapFragment() {
         // Required empty public constructor
     }
 
-    public static VuilbakMapFragment newInstance() {
+    public static VuilbakMapFragment newInstance(String lat, String lon) {
         VuilbakMapFragment fragment = new VuilbakMapFragment();
+        if(!lat.equals("")&&!lon.equals("")) {
+            Bundle args = new Bundle();
+            args.putString(ARG_LATITUDE, lat);
+            args.putString(ARG_LONGITUDE, lon);
+            fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -75,16 +88,14 @@ public class VuilbakMapFragment extends Fragment implements OnMapReadyCallback{
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        LatLng dikkelvenne = new LatLng(50.916667, 3.683333);
+        LatLng myLocation = new LatLng(Double.valueOf(getArguments().get(ARG_LATITUDE).toString()), Double.valueOf(getArguments().get(ARG_LONGITUDE).toString()));
 
         googleMap.setMyLocationEnabled(true);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dikkelvenne, 13));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 18));
 
-        googleMap.addMarker(new MarkerOptions()
-                .title("Dikkelvenne")
-                .snippet("City of Dikkelvenne")
-                .position(dikkelvenne));
-
+        UiSettings uiSets = googleMap.getUiSettings();
+        uiSets.setZoomControlsEnabled(true);
+        uiSets.setMapToolbarEnabled(true);
     }
 
     @Override
@@ -105,9 +116,18 @@ public class VuilbakMapFragment extends Fragment implements OnMapReadyCallback{
         getActivity().findViewById(R.id.container).setPadding(16,16,16,16);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().findViewById(R.id.container).setPadding(0,0,0,0);
+    }
+
     public class loadmore extends AsyncTask<String, Integer, ArrayList<String>> {
 
         ArrayList<String> getCoordinates = new ArrayList<String>();
+        ArrayList<String> getColors = new ArrayList<String>();
+        ArrayList<String> getChipnummers = new ArrayList<String>();
+        ArrayList<String> getAdressen = new ArrayList<String>();
 
         @Override
         protected ArrayList<String> doInBackground(
@@ -126,6 +146,9 @@ public class VuilbakMapFragment extends Fragment implements OnMapReadyCallback{
                     for (int i = 0; i < ja.length(); i++) {
                         JSONObject jo = (JSONObject) ja.get(i);
                         getCoordinates.add(jo.getString("GPS coordinaten"));
+                        getColors.add(jo.getString("Kleur"));
+                        getChipnummers.add(jo.getString("Chipnummer"));
+                        getAdressen.add(jo.getString("Adres/Plaats"));
                     }
                 }
             } catch (MalformedURLException e) {
@@ -144,34 +167,89 @@ public class VuilbakMapFragment extends Fragment implements OnMapReadyCallback{
 
         @Override
         protected void onPostExecute(ArrayList<String> result) {
-           Log.d("Size",getCoordinates.size()+"");
-            ArrayList<String> test = new ArrayList<String>();
+
+            ArrayList<String> DATACoordinatesLat = new ArrayList<String>();
+            ArrayList<String> DATACoordinatesLon = new ArrayList<String>();
+            ArrayList<String> DATAColors = new ArrayList<String>();
+            ArrayList<String> DATAChipnummers = new ArrayList<String>();
+            ArrayList<String> DATAAdressen = new ArrayList<String>();
+
            for(int i=0 ; i < 500 ; i++)
            {
                String[] LatLong;
 
                if(getCoordinates.get(i).equals(""))
                {
-                   Log.d("Mislukt: ",""+i);
+                   //Log.d("Mislukt: ",""+i);
                }
                else if (getCoordinates.get(i).contains(", ")) {
                    LatLong = getCoordinates.get(i).split(", ");
                    LatLong[0] = LatLong[0].replace(",", ".");
                    LatLong[1] = LatLong[1].replace(",", ".");
 
-                   Log.d("VORM1: ",""+i);
+                   DATACoordinatesLat.add(LatLong[0]);
+                   DATACoordinatesLon.add(LatLong[1]);
+                   DATAColors.add(getColors.get(i));
+                   DATAChipnummers.add(getChipnummers.get(i));
+                   DATAAdressen.add(getAdressen.get(i));
+                   //Log.d("VORM1: ",""+i);
                } else {
                    if (getCoordinates.get(i).contains(" ")) {
                        LatLong = getCoordinates.get(i).split(" ");
                        LatLong[0] = LatLong[0].replace(" ", "");
                        LatLong[1] = LatLong[1].replace(" ", "");
-                       Log.d("VORM2: : ",""+i);
+
+                       DATACoordinatesLat.add(LatLong[0]);
+                       DATACoordinatesLon.add(LatLong[1]);
+                       DATAColors.add(getColors.get(i));
+                       DATAChipnummers.add(getChipnummers.get(i));
+                       DATAAdressen.add(getAdressen.get(i));
+                       //Log.d("VORM2: : ",""+i);
                    } else {
                        LatLong = getCoordinates.get(i).split(",");
-                       Log.d("VORM3: ",""+i);
+
+                       DATACoordinatesLat.add(LatLong[0]);
+                       DATACoordinatesLon.add(LatLong[1]);
+                       DATAColors.add(getColors.get(i));
+                       DATAChipnummers.add(getChipnummers.get(i));
+                       DATAAdressen.add(getAdressen.get(i));
+                       //Log.d("VORM3: ",""+i);
                    }
                }
            }
+
+            Log.d("Alles", ""+DATACoordinatesLat.size()+DATACoordinatesLon.size()+DATAColors.size()+DATAChipnummers.size()+DATAAdressen.size());
+
+            for(int i=0; i<DATACoordinatesLat.size();i++) {
+
+                BitmapDescriptor icon;
+
+                switch(DATAColors.get(i)){
+                    case "groen":
+                        icon = BitmapDescriptorFactory.fromResource(R.drawable.green_pin);
+                        break;
+                    case "oranje":
+                        icon = BitmapDescriptorFactory.fromResource(R.drawable.orange_pin);
+                        break;
+                    case "grijs":
+                        icon = BitmapDescriptorFactory.fromResource(R.drawable.grey_pin);
+                        break;
+                    case "inox":
+                        icon = BitmapDescriptorFactory.fromResource(R.drawable.inox_pin);
+                        break;
+                    default:
+                        icon = BitmapDescriptorFactory.fromResource(R.drawable.unknown_pin);
+                }
+
+                GoogleMap myMap = mMapFragment.getMap();
+                myMap.addMarker(
+                   new MarkerOptions()
+                           .title(DATAAdressen.get(i))
+                           .snippet(DATAChipnummers.get(i))
+                           .position(new LatLng(Double.valueOf(DATACoordinatesLat.get(i)), Double.valueOf(DATACoordinatesLon.get(i))))
+                           .icon(icon)
+                );
+            }
         }
     }
 }

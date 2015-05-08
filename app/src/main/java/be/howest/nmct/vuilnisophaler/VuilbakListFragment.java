@@ -33,11 +33,11 @@ public class VuilbakListFragment extends ListFragment implements LoaderManager.L
         // Required empty public constructor
     }
 
-    public static VuilbakListFragment newInstance(String altitude, String longitude) {
+    public static VuilbakListFragment newInstance(String latitude, String longitude) {
         VuilbakListFragment fragment = new VuilbakListFragment();
-        if(!altitude.equals("")&&!longitude.equals("")) {
+        if(!latitude.equals("")&&!longitude.equals("")) {
             Bundle args = new Bundle();
-            args.putString(ARG_LATITUDE, altitude);
+            args.putString(ARG_LATITUDE, latitude);
             args.putString(ARG_LONGITUDE, longitude);
             fragment.setArguments(args);
         }

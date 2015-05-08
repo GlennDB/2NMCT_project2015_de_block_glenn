@@ -43,7 +43,7 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
 
     public interface OnVuilnisOphalerFragmentListener{
         public void onButtonShowListClicked(String latitude, String longitude);
-        public void onButtonShowMapClicked();
+        public void onButtonShowMapClicked(String latitude, String longitude);
     }
 
     public VuilnisOphalerFragment() {
@@ -127,7 +127,13 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
         buttonShowMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToShowMapFragment();
+                if(!latitude.equals("")&&!longitude.equals("")) {
+                    goToShowMapFragment();
+                }
+                else
+                {
+                    Toast.makeText(getActivity().getBaseContext(), "Can't retreive latest position.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -139,7 +145,7 @@ public class VuilnisOphalerFragment extends Fragment implements LocationListener
     }
 
     private void goToShowMapFragment() {
-        onVuilnisOphalerFragmentListener.onButtonShowMapClicked();
+        onVuilnisOphalerFragmentListener.onButtonShowMapClicked(latitude, longitude);
     }
 
     @Override
