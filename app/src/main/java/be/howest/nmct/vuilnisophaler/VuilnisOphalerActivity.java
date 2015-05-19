@@ -102,4 +102,19 @@ public class VuilnisOphalerActivity extends Activity implements VuilnisOphalerFr
     public void onButtonShowMapClicked(String lat, String lon) { showMapFragment(lat, lon); }
     public void onSelectVuilbak(Cursor c) { showVuilbakDetailsFragment(c); }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Fragment f = getFragmentManager().findFragmentById(R.id.container);
+        if (f instanceof VuilbakListFragment)
+        {
+            setTitle("Selecteer een vuilbak: ");
+        }
+        if (f instanceof  VuilnisOphalerFragment)
+        {
+            setTitle("Vuilnis Ophaler");
+        }
+
+    }
+
 }
